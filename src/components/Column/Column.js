@@ -22,7 +22,7 @@ class Column extends React.Component {
     addCard(title) {
         this.setState(state => (
             {
-                card: [
+                cards: [
                     ...state.card,
                     {
                         key: state.card.length ? state.card[state.card.length - 1].key + 1 : 0,
