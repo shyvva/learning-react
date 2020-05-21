@@ -17,15 +17,15 @@ class Column extends React.Component {
     }
 
     state = {
-        card: this.props.cards || [],
+        cards: this.props.cards || [],
     }
     addCard(title) {
         this.setState(state => (
             {
                 cards: [
-                    ...state.card,
+                    ...state.cards,
                     {
-                        key: state.card.length ? state.card[state.card.length - 1].key + 1 : 0,
+                        key: state.cards.length ? state.cards[state.cards.length - 1].key + 1 : 0,
                         title,
                     }
                 ]
@@ -43,7 +43,7 @@ class Column extends React.Component {
                 </h3>
 
                 <div className={styles.card}>
-                    {this.state.card.map(({ key, ...cardProps }) => (
+                    {this.state.cards.map(({ key, ...cardProps }) => (
                         <Card key={key} {...cardProps} />
                     ))}
                 </div>
