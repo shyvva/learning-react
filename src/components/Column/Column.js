@@ -9,51 +9,53 @@ import Icon from '../Icon/Icon';
 class Column extends React.Component {
 
     static propTypes = {
-        title: PropTypes.node.isRequired,
+      title: PropTypes.node.isRequired,
+      cards: PropTypes.array,
+      icon: PropTypes.string,
     }
 
     static defaultProps = {
-        icon: settings.defaultColumnIcon,
+      icon: settings.defaultColumnIcon,
     }
 
     state = {
-        cards: this.props.cards || [],
+      cards: this.props.cards || [],
     }
     addCard(title) {
-        this.setState(state => (
+      this.setState(state => (
+        {
+          cards: [
+            ...state.cards,
             {
-                cards: [
-                    ...state.cards,
-                    {
-                        key: state.cards.length ? state.cards[state.cards.length - 1].key + 1 : 0,
-                        title,
-                    }
-                ]
-            }
-        ));
+              key: state.cards.length ? state.cards[state.cards.length - 1].key + 1 : 0,
+              title,
+            },
+          ],
+        }
+      ));
     }
 
     render() {
-        return (
-            <section className={styles.component}>
-                <h3 className={styles.title}>{this.props.title}
-                    <span className={styles.icon}>
-                        <Icon name={this.props.icon} />
-                    </span>
-                </h3>
+      return (
+        <section className={styles.component}>
+          <h3 className={styles.title}>{this.props.title}
+            <span className={styles.icon}>
+              <Icon name={this.props.icon} />
+            </span>
+          </h3>
 
-                <div className={styles.card}>
-                    {this.state.cards.map(({ key, ...cardProps }) => (
-                        <Card key={key} {...cardProps} />
-                    ))}
-                </div>
+          <div className={styles.card}>
+            {this.state.cards.map(({ key, ...cardProps }) => (
+              <Card key={key} {...cardProps} />
+            ))}
+          </div>
 
-                <div className={styles.creator}>
-                    <Creator text={settings.cardCreatorText} action={title => this.addCard(title)} />
-                </div>
+          <div className={styles.creator}>
+            <Creator text={settings.cardCreatorText} action={title => this.addCard(title)} />
+          </div>
 
-            </section>
-        );
+        </section>
+      );
     }
 }
 
