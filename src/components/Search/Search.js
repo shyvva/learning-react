@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { settings } from '../../data/dataStore';
 import Icon from '../Icon/Icon';
+import Container from '../Container/Container';
 
 class Search extends React.Component {
   static propTypes = {
@@ -22,29 +23,29 @@ class Search extends React.Component {
     value: this.props.searchString,
   }
 
-  handleChange(event){
+  handleChange(event) {
     this.setState({
       value: event.target.value,
       visibleButtons: event.target.value.length > 0,
     });
   }
 
-  handleOK(){
+  handleOK() {
     this.props.changeSearchString(this.state.value);
   }
 
-  componentDidUpdate(prevProps){
-    if(this.props.searchString != prevProps.searchString){
-      this.setState({value: this.props.searchString});
+  componentDidUpdate(prevProps) {
+    if (this.props.searchString != prevProps.searchString) {
+      this.setState({ value: this.props.searchString });
     }
   }
 
   render() {
-    const {text, countVisible, countAll} = this.props;
-    const {value} = this.state;
-    const {icon} = settings.search;
+    const { text, countVisible, countAll } = this.props;
+    const { value } = this.state;
+    const { icon } = settings.search;
     return (
-      <div className={styles.component}>
+      <Container>
         <input
           type='text'
           placeholder={text}
@@ -55,9 +56,10 @@ class Search extends React.Component {
           <Button onClick={() => this.handleOK()}><Icon name={icon} /></Button>
         </div>
         <div>
-          { countVisible == countAll ? '' : `${countVisible} / ${countAll}` }
+          {countVisible == countAll ? '' : `${countVisible} / ${countAll}`}
         </div>
-      </div>
+
+      </Container>
     );
   }
 }
