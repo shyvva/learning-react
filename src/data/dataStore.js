@@ -97,6 +97,20 @@ const lists = [
     description: 'Interesting things I want to check out!',
     image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   },
+
+  {
+    id: 'list-2',
+    title: 'Silence <sup>please dance</sup>',
+    description: '',
+    image: 'https://www.garrisoninstitute.org/wp-content/uploads/2017/10/mindfulness-of-death-1112x630.jpg',
+  },
+
+  {
+    id: 'list-3',
+    title: 'Things to do <sup>soon!</sup>',
+    description: 'Interesting things I want to check out!',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+  },
 ];
 
 const columns = [
@@ -122,7 +136,7 @@ const columns = [
     id: 'column-4',
     listId: 'list-2',
     title: 'Strange column',
-    icon: 'question',
+    icon: 'book-dead',
   },
 ];
 
